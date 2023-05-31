@@ -11,6 +11,9 @@ app.options('/', cors()); // Enable preflight request for the root URL
 app.get('/', (req, res) => {
   res.status(200).send('OK');
 });
+
+const port = process.env.PORT || 8080;
+
 app.listen(port);
 /** middlewares */
 app.use(express.json());
@@ -18,8 +21,6 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.disable('x-powered-by'); // less hackers know about our stack
 
-
-const port = process.env.PORT || 8080;
 
 
 
