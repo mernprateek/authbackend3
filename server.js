@@ -34,6 +34,7 @@ const port = process.env.PORT || 8080;
 
 /** HTTP GET Request */
 app.get('/', (req, res) => {
+     res.status(200).send('OK');
     res.status(201).json("Home GET Request");
 });
 
