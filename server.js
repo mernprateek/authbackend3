@@ -4,22 +4,12 @@ import morgan from 'morgan';
 import connect from './database/conn.js';
 import router from './router/route.js';
 
-const corsOptions = {
-    origin: 'http://localhost:3000/',
-    optionsSuccessStatus: 200,
-    credentials: true
-    
-}
+app.use(cors());
+app.options('/', cors()); // Enable preflight request for the root URL
 
-app.use(cors(corsOptions));
-
-app.options('/', cors());
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-})
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
 app.listen(port);
 /** middlewares */
 app.use(express.json());
